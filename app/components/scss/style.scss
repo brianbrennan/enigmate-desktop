@@ -1,0 +1,25 @@
+
+//--------------------------------------------------Imports
+
+@import "../lib/bourbon/app/assets/stylesheets/bourbon";
+@import "../lib/breakpoint-sass/stylesheets/breakpoint";
+@import "../lib/susy/sass/susy";
+
+@import "reset";
+@import "variables";
+
+$susy: (
+	columns: 12,
+	gutter-position:after
+	);
+
+*::selection{
+	background-color: $green;
+	color:$white;
+}
+
+//--------------------------------------------------Styles
+
+body{
+	background-color:$lighter-grey;
+}

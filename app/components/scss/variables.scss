@@ -1,0 +1,37 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway|Open+Sans);
+
+//----------------------------Fonts
+$headline		: 'Raleway', sans-serif;
+$body			: 'Open Sans', sans-serif;
+
+//----------------------------Color
+
+$lighter-grey	: #efefef;
+$light-grey 	: #ccc;
+$green			: #4AC6B7;
+$dark			: #818D97;
+$darker 		: #484D51;
+$white			: #FFF;
+$overlay		: rgba(129,141,151,0.5);
+
+
+//----------------------------Spacing
+
+$mic			:3px;
+$tny			:8px;
+$sm				:15px;
+$reg			:30px;
+$med			:45px;
+$lg 			:60px;
+$xl				:90px;
+$xxl			:120px;
+
+//---------------------------Font Size Variables
+$minFontSize:	10px;
+$tnyFontSize:	12px;
+$smFontSize:	14px;
+$regFontSize:	16px;
+$medFontSize:	20px;
+$lgFontSize:	36px;
+$xlFontSize:	48px;
+$xxlFontSize:	72px;
