@@ -26,13 +26,22 @@ fs.readdir(FILE_PATH, function(err, f){//gets files currently in directory
 		files = f;
 
 		for(var i = 0; i < files.length; i++){
-			s('.sidebar ul').insert("<li value=\"" + i +"\">" + files[i] + "</li>");
+			if(fs.lstatSync(FILE_PATH + files[i]).isDirectory()){
+				s('.sidebar ul').insert("<li value=\"" + i +"\" class=\"directory\">" + files[i] + "</li>");
+			} else {
+				s('.sidebar ul').insert("<li value=\"" + i +"\">" + files[i] + "</li>");
+			}
+
 		}
 
-		s('.sidebar ul li').on('click', function(e){
-			s('.sidebar ul li').removeClass();
+		s('.sidebar ul li:not(.directory)').on('click', function(e){
+			s('.sidebar ul li:not(.directory)').removeClass();
 			s(this).addClass('active');
 			loadFile(s(this).attr('value')[0]);
+		});
+
+		s('.sidebar .directory').on('click', function(e){
+			//animate and show
 		});
 	}
 
