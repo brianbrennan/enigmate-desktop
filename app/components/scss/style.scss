@@ -67,4 +67,26 @@ body{
 	height:550px;
 	clear:both;
 	float:left;
+	box-sizing:border-box;
+
+	h4{
+		font-family: $headline;
+		font-weight:700;
+		text-align:center;
+		margin:$sm 0 $tny 0;
+	}
+
+	ul{
+		li{
+			font-size:$smFontSize;
+			padding:$tny $sm;
+			width:100%;
+			cursor:pointer;
+
+			&:hover, &.active{
+				background-color:$white;
+				color:$blue;
+			}
+		}
+	}
 }

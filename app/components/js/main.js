@@ -6,6 +6,7 @@ var fs 				= require('fs');
 var FILE_PATH		= './app/files/';
 var files = [];
 
+var loading = false;
 var maxed = false;
 
 //------------------------------------------Initialization
@@ -19,6 +20,11 @@ fs.readdir(FILE_PATH, function(err, f){//gets files currently in directory
 		for(var i = 0; i < files.length; i++){
 			s('.sidebar ul').insert("<li>" + files[i] + "</li>");
 		}
+
+		s('.sidebar ul li').on('click', function(e){
+			s('.sidebar ul li').removeClass();
+			s(this).addClass('active');
+		});
 	}
 
 });
