@@ -37,8 +37,37 @@ table {
   color: #FFF; }
 
 body {
-  background-color: #efefef; }
+  background-color: #FFF;
+  width: 100%;
+  height: 100%;
+  color: #6e6e6e;
+  font-family: 'Open Sans', sans-serif; }
 
-.titlebar li {
-  float: right;
-  padding: 15px; }
+.titlebar {
+  height: 50px;
+  width: 100%;
+  -webkit-app-region: drag; }
+  .titlebar .logo {
+    font-family: 'Raleway', sans-serif;
+    float: left;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em; }
+  .titlebar ul li {
+    float: right;
+    padding: 15px;
+    cursor: pointer;
+    -webkit-user-select: text;
+    -webkit-app-region: no-drag; }
+    .titlebar ul li:nth-child(1):hover {
+      background-color: #FF7070;
+      color: #FFF; }
+    .titlebar ul li:nth-child(2):hover, .titlebar ul li:nth-child(3):hover {
+      color: #4AA0D5; }
+
+.sidebar {
+  background-color: #efefef;
+  width: 200px;
+  height: 550px;
+  clear: both;
+  float: left; }
