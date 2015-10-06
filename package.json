@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager . enigmate --ignore=node_modules/electron-* --ignore=node_modules/grunt* --ignore=node_modules/bower --ignore=app/components/lib/bourbon --ignore=app/components/lib/breakpoint-sass --ignore=app/components/lib/susy --ignore=app/components/lib/sassy-maps --ignore=app/components/scss --ignore=app/files/* --platform=win32 --arch=all --out=staging --version=0.33.6 --overwrite"
   },
   "keywords": [
     "Encryption",
@@ -24,6 +25,7 @@
     "grunt-sass": "^0.18.1"
   },
   "dependencies": {
+    "electron-packager": "^5.1.0",
     "electron-prebuilt": "^0.33.6",
     "enigma.js": "^0.8.4"
   }
