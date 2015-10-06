@@ -33,7 +33,7 @@ table {
   border-spacing: 0; }
 
 *::selection {
-  background-color: #4AC6B7;
+  background-color: none;
   color: #FFF; }
 
 body {
