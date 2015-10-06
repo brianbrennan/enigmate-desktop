@@ -24,7 +24,7 @@
     "grunt-sass": "^0.18.1"
   },
   "dependencies": {
-    "enigma.js": "^0.8.1",
-    "electron-prebuilt": "^0.33.6"
+    "electron-prebuilt": "^0.33.6",
+    "enigma.js": "^0.8.4"
   }
 }

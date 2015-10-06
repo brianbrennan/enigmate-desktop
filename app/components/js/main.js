@@ -6,7 +6,7 @@ var Enigma 	= require('enigma.js');
 
 var e = new Enigma({
 	sequence: 'ascii',
-	rotorSettings: '99Taps',
+	rotorSettings: 'Welcome ToTheJugleWeGot99Problems',
 	spaces: true
 });
 
@@ -61,24 +61,30 @@ s('#minimize-window').on('click', function(e){
 	wind.minimize();
 });
 
-s('#encrypt-file').on('click', function(e){
+s('#encrypt-file').on('click', function(event){
 
-	if(e)
-		return e;
+	var m = e.encrypt(active_file);
 
-	fs.readFile('in.txt', function(err, data){
-	m = e.encrypt(data.toString());
+	fs.writeFile(FILE_PATH + '/encrypted.ej', m, function(err){
 
-	fs.writeFile('encrypted.ej', m, function(err){
+		if(err)
+			console.log(err);
 
-		m = e.decrypt(m);
-
-		fs.writeFile('out.txt', m, function(err){
-
-		});
 
 	});
 });
+
+s('#decrypt-file').on('click', function(event){
+
+	var m = e.decrypt(active_file);
+
+	fs.writeFile(FILE_PATH + '/decrypted.txt', m, function(err){
+
+		if(err)
+			console.log(err);
+
+
+	});
 });
 
 //----------------------------------------------Functions
