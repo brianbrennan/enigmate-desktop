@@ -23,3 +23,10 @@ $susy: (
 body{
 	background-color:$lighter-grey;
 }
+
+.titlebar{
+	li{
+		float:right;
+		padding:$sm;
+	}
+}

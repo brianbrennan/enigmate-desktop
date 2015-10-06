@@ -38,3 +38,7 @@ table {
 
 body {
   background-color: #efefef; }
+
+.titlebar li {
+  float: right;
+  padding: 15px; }
