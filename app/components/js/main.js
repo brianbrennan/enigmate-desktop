@@ -19,24 +19,9 @@ var maxed = false;
 
 //------------------------------------------Initialization
 
-fs.readdir(FILE_PATH, function(err, f){//gets files currently in directory
-	if(err)
-		files[i] = "Something Went Wrong";
-	else{
-		files = f;
+mapFileTree(FILE_PATH);
 
-		for(var i = 0; i < files.length; i++){
-			s('.sidebar ul').insert("<li value=\"" + i +"\">" + files[i] + "</li>");
-		}
 
-		s('.sidebar ul li').on('click', function(e){
-			s('.sidebar ul li').removeClass();
-			s(this).addClass('active');
-			loadFile(s(this).attr('value')[0]);
-		});
-	}
-
-});
 
 s('#close-window').on('click', function(e){
 	var wind = remote.getCurrentWindow();
@@ -88,6 +73,26 @@ s('#decrypt-file').on('click', function(event){
 });
 
 //----------------------------------------------Functions
+
+function mapFileTree(s){
+	fs.readdir(s, function(err, f){//gets files currently in directory
+		if(err)
+			files[0] = "Something Went Wrong";
+		else
+			files = f;
+
+		for(var i = 0; i < files.length; i++){
+			if(fs.lstatSync(s).isDirectory()){
+				mapFileTree(s + "/" + files[i]);
+			} else {
+				console.log(files[i]);
+			}
+		}
+
+		return;
+
+	});
+}
 
 function loadFile(n){
 	loading = true;

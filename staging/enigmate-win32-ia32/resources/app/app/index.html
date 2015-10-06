@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="components/styles.css">
+</head>
+<body>
+	<div class="titlebar">
+		<div class="logo">
+			  <span id="e">E</span>
+  <span id="n">N</span>
+  <span id="i">I</span>
+  <span id="g">G</span>
+  <span id="m">M</span>
+  <span id="a">A</span>
+  <span id="t">T</span>
+  <span id="e2">E</span>
+		</div>
+		<ul>
+			<li id="close-window">X</li>
+			<li id="maximize-window">M</li>
+			<li id="minimize-window">m</li>
+			<li id="encrypt-file">Encrypt</li>
+			<li id="decrypt-file">Decrypt</li>
+		</ul>
+	</div>
+
+	<div class="sidebar">
+		<h4>Files</h4>
+		<ul></ul>
+	</div>
+
+	<div class="main-view">
+		<div class="empty">Click a file in the sidebar to view</div>
+		<div class="content">
+			<pre></pre>	
+		</div>
+	</div>
+
+
+	<script>require('./components/lib/slimpickin/dist/slimpickin.js');</script>
+	<script>require('./components/js/main.js');</script>
+</body>
+</html>

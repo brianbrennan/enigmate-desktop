@@ -1,0 +1,7 @@
+﻿2015-10-06 15:40:25> Program: Starting Squirrel Updater: --releasify Package.1.0.0.nupkg
+2015-10-06 15:40:26> Program: Bootstrapper EXE found at:.\Setup.exe
+2015-10-06 15:40:26> Program: Creating release package: C:\Users\user\Desktop\enigmate-desktop\staging\Releases\Package.1.0.0.nupkg
+2015-10-06 15:40:26> ReleasePackage: Creating release package: C:\Users\user\Desktop\enigmate-desktop\staging\Releases\Package.1.0.0.nupkg => C:\Users\user\Desktop\enigmate-desktop\staging\Releases\Package-1.0.0-full.nupkg
+2015-10-06 15:40:28> ReleasePackage: Extracting dependent packages: []
+2015-10-06 15:40:28> ReleasePackage: Removing unnecessary data
+2015-10-06 15:40:34> Program: Building embedded zip file for Setup.exe
