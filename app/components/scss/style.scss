@@ -13,12 +13,14 @@ $susy: (
 	gutter-position:after
 	);
 
-*::selection{
-	background-color: none;
-	color:$white;
-}
+
 
 //--------------------------------------------------Styles
+
+*::selection{
+	color:$white;
+	background-color: $blue;
+}
 
 body{
 	background-color:$white;
@@ -69,6 +71,7 @@ body{
 	clear:both;
 	float:left;
 	box-sizing:border-box;
+	-webkit-user-select: text;
 
 	h4{
 		font-family: $headline;
