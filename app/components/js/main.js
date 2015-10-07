@@ -89,23 +89,36 @@ dropzone.ondrop = function(e){
 	for(var i = 0; i < e.dataTransfer.items.length; i++){
 		temp.push(e.dataTransfer.items[i].getAsFile());
 
-		mapFileTree(temp[i].path);
+		files.push(mapFileTree(temp[i].path));
 	}
+
+	console.log(files);
 }
 
 //----------------------------------------------Functions
 
 function mapFileTree(s){
-	console.log(s);
+
 	if(fs.lstatSync(s).isDirectory()){
-		s = s + "/";
+		s = s + "\\";
 		var d = fs.readdirSync(s);
 
+		var o = {};
+
+		o.name = s;
+		o.type = "dir";
+		o.files = [];
+
 		for(var i = 0; i < d.length; i++){
-			mapFileTree(s + d[i]);
+			o.files.push(mapFileTree(s + d[i]));
 		}
+		 return o;
 	} else {
-		files.push(fs.readFileSync(s));
+		var o = {};
+
+		o.name = s;
+		o.type = "file";
+		return o;
 	}
 }
 
