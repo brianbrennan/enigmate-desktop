@@ -19,8 +19,6 @@ var maxed = false;
 
 //------------------------------------------Initialization
 
-mapFileTree(FILE_PATH);
-
 
 
 s('#close-window').on('click', function(e){
@@ -72,27 +70,36 @@ s('#decrypt-file').on('click', function(event){
 	});
 });
 
+//------------------------File and Folder Drop
+
+document.addEventListener('dragover',function(event){
+    event.preventDefault();
+    return false;
+  },false);
+
+  document.addEventListener('drop',function(event){
+    event.preventDefault();
+    return false;
+  },false);
+
+var dropzone = document.getElementById('dropzone');
+
+dropzone.ondrop = function(e){
+	files = e.dataTransfer.items;
+
+	for(var i = 0; i < files.length; i++){
+		var entry = files[i].webkitGetAsEntry();
+
+		if(entry.isFile){
+			console.log('file');
+		} else if(entry.isDirectory){
+			console.log(entry);
+		}
+	}
+}
+
 //----------------------------------------------Functions
 
-function mapFileTree(s){
-	fs.readdir(s, function(err, f){//gets files currently in directory
-		if(err)
-			files[0] = "Something Went Wrong";
-		else
-			files = f;
-
-		for(var i = 0; i < files.length; i++){
-			if(fs.lstatSync(s).isDirectory()){
-				mapFileTree(s + "/" + files[i]);
-			} else {
-				console.log(files[i]);
-			}
-		}
-
-		return;
-
-	});
-}
 
 function loadFile(n){
 	loading = true;
