@@ -85,20 +85,14 @@ document.addEventListener('dragover',function(event){
 var dropzone = document.getElementById('dropzone');
 
 dropzone.ondrop = function(e){
-	files = e.dataTransfer.items;
 
-	for(var i = 0; i < files.length; i++){
-		var entry = files[i].webkitGetAsEntry();
-
-		if(entry.isFile){
-			console.log('file');
-		} else if(entry.isDirectory){
-			console.log(entry);
-		}
-	}
 }
 
 //----------------------------------------------Functions
+
+function mapFileTree(s){
+
+}
 
 
 function loadFile(n){
