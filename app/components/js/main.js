@@ -85,13 +85,28 @@ document.addEventListener('dragover',function(event){
 var dropzone = document.getElementById('dropzone');
 
 dropzone.ondrop = function(e){
+	var temp = [];
+	for(var i = 0; i < e.dataTransfer.items.length; i++){
+		temp.push(e.dataTransfer.items[i].getAsFile());
 
+		mapFileTree(temp[i].path);
+	}
 }
 
 //----------------------------------------------Functions
 
 function mapFileTree(s){
+	console.log(s);
+	if(fs.lstatSync(s).isDirectory()){
+		s = s + "/";
+		var d = fs.readdirSync(s);
 
+		for(var i = 0; i < d.length; i++){
+			mapFileTree(s + d[i]);
+		}
+	} else {
+		files.push(fs.readFileSync(s));
+	}
 }
 
 
