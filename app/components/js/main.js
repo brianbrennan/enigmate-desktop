@@ -76,14 +76,14 @@ s('#decrypt-file').on('click', function(event){
 //------------------------File and Folder Drop
 
 document.addEventListener('dragover',function(event){
-    event.preventDefault();
-    return false;
-  },false);
+	event.preventDefault();
+	return false;
+},false);
 
-  document.addEventListener('drop',function(event){
-    event.preventDefault();
-    return false;
-  },false);
+document.addEventListener('drop',function(event){
+	event.preventDefault();
+	return false;
+},false);
 
 var dropzone = document.getElementById('dropzone');
 
@@ -95,7 +95,21 @@ dropzone.ondrop = function(e){
 		files.push(mapFileTree(temp[i].path));
 	}
 
-	s('.sidebar ul').innerHtml(listFiles(files[0]));
+	s('.sidebar ul').innerHtml(listFiles(files[0])).css('opacity','1');
+
+	s('.dir').on('click', function(e){
+		if(s(this).hasClass('open')[0]){
+			this.children[0].style.display = 'none';
+			this.children[0].style.opacity = '0';
+			s(this).removeClass('open');
+		} else {
+			this.children[0].style.display = 'block';
+			this.children[0].style.opacity = '1';
+			s(this).addClass('open');
+		}
+
+	});
+
 }
 
 //----------------------------------------------Functions
@@ -115,7 +129,7 @@ function mapFileTree(s){
 		for(var i = 0; i < d.length; i++){
 			o.files.push(mapFileTree(s + d[i]));
 		}
-		 return o;
+		return o;
 	} else {
 		var o = {};
 
