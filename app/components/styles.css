@@ -73,20 +73,30 @@ body {
   clear: both;
   float: left;
   box-sizing: border-box;
-  -webkit-user-select: text; }
+  -webkit-user-select: text;
+  overflow: scroll; }
   .sidebar h4 {
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
     text-align: center;
     margin: 15px 0 8px 0; }
-  .sidebar ul li {
-    font-size: 14px;
-    padding: 8px 15px;
-    width: 100%;
-    cursor: pointer; }
-    .sidebar ul li:hover, .sidebar ul li.active {
-      background-color: #FFF;
-      color: #4AA0D5; }
+  .sidebar ul {
+    opacity: 1;
+    padding-left: 8px;
+    -webkit-transition: 0.2s opacity;
+    -moz-transition: 0.2s opacity;
+    transition: 0.2s opacity; }
+    .sidebar ul li {
+      font-size: 14px;
+      padding: 8px 15px;
+      width: 100%;
+      cursor: pointer; }
+      .sidebar ul li:hover, .sidebar ul li.active {
+        background-color: #FFF;
+        color: #4AA0D5; }
+    .sidebar ul .dir ul {
+      display: none;
+      opacity: 0; }
 
 .main-view {
   float: left;

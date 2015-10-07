@@ -72,6 +72,7 @@ body{
 	float:left;
 	box-sizing:border-box;
 	-webkit-user-select: text;
+	overflow:scroll;
 
 	h4{
 		font-family: $headline;
@@ -81,6 +82,9 @@ body{
 	}
 
 	ul{
+		opacity:1;
+		padding-left:$tny;
+		@include transition(0.2s opacity);
 		li{
 			font-size:$smFontSize;
 			padding:$tny $sm;
@@ -90,6 +94,13 @@ body{
 			&:hover, &.active{
 				background-color:$white;
 				color:$blue;
+			}
+		}
+
+		.dir{
+			ul{
+				display:none;
+				opacity:0;
 			}
 		}
 	}

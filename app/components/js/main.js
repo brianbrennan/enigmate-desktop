@@ -57,6 +57,9 @@ s('#encrypt-file').on('click', function(event){
 	});
 });
 
+s('.sidebar .dir').on('click', function(e){
+});
+
 s('#decrypt-file').on('click', function(event){
 
 	var m = e.decrypt(active_file);
@@ -92,7 +95,7 @@ dropzone.ondrop = function(e){
 		files.push(mapFileTree(temp[i].path));
 	}
 
-	console.log(files);
+	s('.sidebar ul').innerHtml(listFiles(files[0]));
 }
 
 //----------------------------------------------Functions
@@ -105,7 +108,7 @@ function mapFileTree(s){
 
 		var o = {};
 
-		o.name = s;
+		o.path = s;
 		o.type = "dir";
 		o.files = [];
 
@@ -116,9 +119,23 @@ function mapFileTree(s){
 	} else {
 		var o = {};
 
-		o.name = s;
+		o.path = s;
 		o.type = "file";
 		return o;
+	}
+}
+
+function listFiles(f){
+	if(f.type == 'file'){
+		return "<li>" + f.path + "</li>";
+	} else {
+		var m = "<li class=\"dir\">" + f.path + "<ul>";
+		for(var i = 0; i < f.files.length; i++){
+			m = m + listFiles(f.files[i]);
+		}
+
+		m = m + "</ul></li>";
+		return m;
 	}
 }
 
