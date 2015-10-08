@@ -95,7 +95,7 @@ body {
       .sidebar ul li:hover, .sidebar ul li.active {
         background-color: #FFF;
         color: #4AA0D5; }
-    .sidebar ul .dir ul {
+    .sidebar ul .dir + ul {
       display: none;
       opacity: 0; }
 

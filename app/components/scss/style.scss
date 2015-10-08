@@ -98,11 +98,9 @@ body{
 			}
 		}
 
-		.dir{
-			ul{
-				display:none;
-				opacity:0;
-			}
+		& .dir + ul{
+			display:none;
+			opacity:0;
 		}
 	}
 }

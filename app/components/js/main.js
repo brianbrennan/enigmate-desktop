@@ -89,24 +89,34 @@ var dropzone = document.getElementById('dropzone');
 
 dropzone.ondrop = function(e){
 	var temp = [];
+
 	for(var i = 0; i < e.dataTransfer.items.length; i++){
 		temp.push(e.dataTransfer.items[i].getAsFile());
 
 		files.push(mapFileTree(temp[i].path));
+		console.log(files);
 	}
 
-	s('.sidebar ul').innerHtml(listFiles(files[0])).css('opacity','1');
+	for(var i = 0; i < files.length; i++){
+		var ih = s('.sidebar ul:nth-child(' + (i * 2 + 1) + 'n)').innerHtml();
+		console.log(ih);
+		s('.sidebar ul:nth-child(' + (i * 2 + 1) + 'n)').innerHtml(ih + listFiles(files[i])).css('opacity','1');
+	}
 
 	s('.dir').on('click', function(e){
 		if(s(this).hasClass('open')[0]){
-			this.children[0].style.display = 'none';
-			this.children[0].style.opacity = '0';
+			s(s(this).selector + ' + ul').css('opacity', '0');
+			s(s(this).selector + ' + ul').css('display', 'none');
 			s(this).removeClass('open');
-		} else {
-			this.children[0].style.display = 'block';
-			this.children[0].style.opacity = '1';
+		} else {			
+			s(s(this).selector + ' + ul').css('display', 'block');
+			s(s(this).selector + ' + ul').css('opacity', '1');
 			s(this).addClass('open');
 		}
+
+	});
+
+	fs.writeFile('./app/temp/temp.txt',files,function(err){
 
 	});
 
@@ -117,10 +127,13 @@ dropzone.ondrop = function(e){
 function mapFileTree(s){
 
 	if(fs.lstatSync(s).isDirectory()){
-		s = s + "\\";
-		var d = fs.readdirSync(s);
 
 		var o = {};
+
+		o.name = s.substr(s.lastIndexOf('\\') + 1,s.length);
+
+		s = s + "\\";
+		var d = fs.readdirSync(s);
 
 		o.path = s;
 		o.type = "dir";
@@ -133,6 +146,8 @@ function mapFileTree(s){
 	} else {
 		var o = {};
 
+		o.name = s.substr(s.lastIndexOf('\\') + 1,s.length);
+
 		o.path = s;
 		o.type = "file";
 		return o;
@@ -141,14 +156,14 @@ function mapFileTree(s){
 
 function listFiles(f){
 	if(f.type == 'file'){
-		return "<li>" + f.path + "</li>";
+		return "<li>" + f.name + "</li>";
 	} else {
-		var m = "<li class=\"dir\">" + f.path + "<ul>";
+		var m = "<li class=\"dir\">" + f.name + "</li><ul>";
 		for(var i = 0; i < f.files.length; i++){
 			m = m + listFiles(f.files[i]);
 		}
 
-		m = m + "</ul></li>";
+		m = m + "</ul>";
 		return m;
 	}
 }
